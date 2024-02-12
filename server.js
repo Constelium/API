@@ -8,7 +8,7 @@ const mailRoutes = require("./routes/mailRoutes");
 const app = express();
 const port = 3001;
 const corsOptions = {
-  origin: "https://www.constelium.xyz/",
+  origin: "*",
   optionsSuccessStatus: 200, // Pour les navigateurs qui ne supportent pas le code 204
 };
 
