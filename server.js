@@ -12,25 +12,12 @@ require("dotenv").config();
 
 connectDB();
 
-app.use((req, res, next) => {
-  // Remplacez "*" par "https://www.constelium.xyz/"
-  res.setHeader("Access-Control-Allow-Origin", "https://www.constelium.xyz/");
+const corsOptions = {
+  origin: "https://www.constelium.xyz/",
+  optionsSuccessStatus: 200, // Pour les navigateurs qui ne supportent pas le code 204
+};
 
-  // Assurez-vous que les autres en-têtes sont définis comme avant
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
-  );
-
-  // Si vous souhaitez toujours autoriser les requêtes de n'importe quelle origine en mode développement par exemple,
-  // vous pouvez ajouter une condition ici pour définir l'origine autorisée de manière dynamique.
-
-  next();
-});
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
