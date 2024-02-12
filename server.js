@@ -7,15 +7,14 @@ const userRoutes = require("./routes/userRoutes");
 const mailRoutes = require("./routes/mailRoutes");
 const app = express();
 const port = 3001;
-
-require("dotenv").config();
-
-connectDB();
-
 const corsOptions = {
   origin: "https://www.constelium.xyz/",
   optionsSuccessStatus: 200, // Pour les navigateurs qui ne supportent pas le code 204
 };
+
+require("dotenv").config();
+
+connectDB();
 
 app.use(cors(corsOptions));
 
