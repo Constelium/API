@@ -7,12 +7,17 @@ const userRoutes = require("./routes/userRoutes");
 const mailRoutes = require("./routes/mailRoutes");
 const app = express();
 const port = 3001;
+const corsOptions = {
+  origin: "*",
+  optionsSuccessStatus: 200, // Pour les navigateurs qui ne supportent pas le code 204
+};
 
 require("dotenv").config();
 
 connectDB();
 
-app.use(cors()); // Utilisez cors comme middleware
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 app.use("/user", userRoutes);
